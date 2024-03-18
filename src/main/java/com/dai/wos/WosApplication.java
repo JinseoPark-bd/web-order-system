@@ -10,5 +10,4 @@ public class WosApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WosApplication.class, args);
 	}
-
 }

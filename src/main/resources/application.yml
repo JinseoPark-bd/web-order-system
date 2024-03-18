@@ -1,7 +1,7 @@
 # default
 spring:
   datasource:
-    url:
+    url: jdbc:oracle:thin:@localhost:1521:XE
     username:
     password:
     driver-class-name: orcale.jdbc.OracleDriver
