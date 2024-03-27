@@ -1,20 +1,5 @@
-# default
 spring:
-  datasource:
-    url: jdbc:oracle:thin:@localhost:1521:XE
-    username:
-    password:
-    driver-class-name: orcale.jdbc.OracleDriver
-  jpa:
-    hibernate:
-      ddl-auto: create
-    properties:
-      hibernate:
-        format_sql: true
-  security:
-      user:
-          name: user
-          password: 1234
-logging:
-  level:
-    org.hibernate.SQL: debug
+  application:
+    name: wos
+  profiles:
+    active: prod

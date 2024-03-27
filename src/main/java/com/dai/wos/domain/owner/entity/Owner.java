@@ -1,6 +1,5 @@
-package com.dai.wos.domain.category.entity;
+package com.dai.wos.domain.owner.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
@@ -12,12 +11,17 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "OJT_OMS_CATEGORY_JPA")
-public class Category {
+@Entity(name = "OJT_OMS_OWNER_JPA")
+public class Owner {
 
     @Id
-    private String cateId;
+    private String ownerId;
 
-    @Column(nullable = false)
-    private String cateNm;
+    private String ownerNm;
+
+    private String ceoNm;
+
+    private String ownerTel;
+
+    private String ownerFax;
 }
