@@ -1,9 +1,7 @@
 package com.dai.wos.domain.item.entity;
 
 import com.dai.wos.baseEntity.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -18,8 +16,12 @@ public class Item extends BaseEntity {
     @Column(nullable = false)
     private String itemNm;
 
+    @ManyToOne
+    @JoinColumn(name="OWNER_ID")
     private String ownerId;
 
+    @ManyToOne
+    @JoinColumn(name="CATE_ID")
     private String cateId;
 
     private int itemCount;

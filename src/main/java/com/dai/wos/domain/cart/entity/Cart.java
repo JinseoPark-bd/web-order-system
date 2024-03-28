@@ -1,9 +1,6 @@
 package com.dai.wos.domain.cart.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,8 +17,12 @@ public class Cart {
     //@GeneratedValue(strategy = GenerationType.SEQUENCE)
     private String cartId;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="")
     private String userId;
 
+    @OneToMany
+    @JoinColumn(name="CART_ID")
     private String itemId;
 
     private int itemCount;

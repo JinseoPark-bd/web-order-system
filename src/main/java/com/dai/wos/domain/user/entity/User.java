@@ -1,6 +1,7 @@
 package com.dai.wos.domain.user.entity;
 
 import com.dai.wos.baseEntity.BaseEntity;
+import com.dai.wos.domain.owner.entity.Owner;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,7 +22,9 @@ public class User extends BaseEntity {
 
     private char userGroup;
 
-    private String ownerId;
+    @ManyToOne
+    @JoinColumn(name = "OWNER_ID")
+    private Owner owner;
 
     private String userTel;
 
