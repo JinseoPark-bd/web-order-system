@@ -6,9 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name = "OJT_OMS_USER_JPA")
 public class User extends BaseEntity {
 
@@ -32,5 +30,16 @@ public class User extends BaseEntity {
 
     @Column(nullable = false)
     private char userUse;
+
+    @Builder
+    private User (String userId, String userPwd, String userNm, char userGroup, Owner owner, String userTel, String userEmail) {
+        this.userId = userId;
+        this.userPwd = userPwd;
+        this.userNm = userNm;
+        this.userGroup = userGroup;
+        this.owner = owner;
+        this.userTel = userTel;
+        this.userEmail = userEmail;
+    }
 
 }
