@@ -2,6 +2,7 @@ package com.dai.wos.domain.order.entity;
 
 import com.dai.wos.domain.account.entity.Account;
 import com.dai.wos.domain.item.entity.Item;
+import com.dai.wos.domain.owner.entity.Owner;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,36 +13,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "OJT_OMS_ORDER_JPA")
 public class Order {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String seq;
-
-    private String orderkey;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long seq;
 
     @ManyToOne
     @JoinColumn(name = "ACT_ID")
     private Account account;
 
-    //private String actNm;
+    @Column(nullable = false)
+    private String actNm;
 
-    @OneToMany
-    @JoinColumn(name="ORDER_SEQ")
-    private List<Item> items = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name="ITEM_ID")
+    private Item item;
 
-    //private String itemNm;
+    @Column(nullable = false)
+    private String itemNm;
 
     @ManyToOne
-    @JoinColumn(name="ORDER_SEQ")
-    private String ownerId;
+    @JoinColumn(name="OWNER_ID")
+    private Owner owner;
 
     @Column(nullable = false)
     private int ordCnt;
 
+    @Column(nullable = false)
     private String unit;
+
+    @Builder
+    private Order (Account account, Item item, Owner owner, int ordCnt, String unit) {
+        this.account = account;
+        this.actNm = account.getActNm();
+        this.item = item;
+        this.itemNm = item.getItemNm();
+        this.owner = owner;
+        this.ordCnt = ordCnt;
+        this.unit = unit;
+    }
 }

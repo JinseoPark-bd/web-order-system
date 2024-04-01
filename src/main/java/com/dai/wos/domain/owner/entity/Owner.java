@@ -1,5 +1,6 @@
 package com.dai.wos.domain.owner.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ public class Owner {
     @Id
     private String ownerId;
 
+    @Column(nullable = false)
     private String ownerNm;
 
     private String ceoNm;

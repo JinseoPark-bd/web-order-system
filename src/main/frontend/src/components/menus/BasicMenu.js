@@ -3,7 +3,7 @@ import logo from '../../images/oms_logo.png'
 
 const BasicMenu = () => {
   return (
-    <nav id='navbar' className="flex bg-[#4754C9] border-b-white">
+    <nav id='navbar' className="flex bg-[#4754C9] border-b border-white">
         <h1 className="home w-2/3 m-1">
           <Link to={'/'}>
             <img src={logo} alt="title_logo" className=" w-48 h-28"/>

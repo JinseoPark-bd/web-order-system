@@ -17,8 +17,8 @@ public class UserApiController {
 
     private final UserService userService;
 
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UserLoginRequestDto request) throws Exception {
-        return ResponseEntity.ok().body(userService.logIn(request));
-    }
+//    @PostMapping("/login")
+//    public ResponseEntity<String> login(@RequestBody UserLoginRequestDto request) throws Exception {
+//        return ResponseEntity.ok().body(userService.logIn(request));
+//    }
 }

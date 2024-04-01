@@ -16,6 +16,7 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private String userPwd;
 
+    @Column(nullable = false)
     private String userNm;
 
     private char userGroup;
