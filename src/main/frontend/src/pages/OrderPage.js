@@ -2,12 +2,11 @@ import React, {useEffect, useState} from 'react';
 import { Button } from "@material-tailwind/react";
 import BasicLayout from "../layouts/BasicLayout";
 import { TestTable } from "../components/dataTable/TestTable";
-import DatePicker from "react-datepicker";
-
+import ReactDatePicker from "react-datepicker";
+import 'react-datepicker/dist/react-datepicker.css';
 
 const OrderPage = () => {
-  const [ startDate, setStartDate ] = useState(new Date());
-  const [ endDate, setEndDate ] = useState(new Date());
+  const [ todayDate, setTodayDate ] = useState(new Date());
 
   return (
     <BasicLayout>
@@ -27,8 +26,7 @@ const OrderPage = () => {
           <div className="item grid gap-5 grid-cols-2">
             <div className="flex flex-col space-y-1.5 m-3">
               <label htmlFor="order_date">주문 일자</label>
-              <input id="order_date" placeholder="Order_date" required />
-              <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}/>
+              <ReactDatePicker disabled selected={todayDate} placeholderText={todayDate}/>
             </div>
             <div className="flex flex-col space-y-1.5 m-3">
               <label htmlFor="account">거래처</label>
