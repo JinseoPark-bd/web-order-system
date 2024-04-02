@@ -161,10 +161,10 @@ export default function DataTable(
   }, [selection]);
 
 
-<DataTable 
-              headers={headers} 
-              items={items} 
-              selectable={true} 
+<DataTable
+              headers={headers}
+              items={items}
+              selectable={true}
               updateSelection={setSelection}
             />
 */
