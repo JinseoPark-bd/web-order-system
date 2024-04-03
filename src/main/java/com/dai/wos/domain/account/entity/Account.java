@@ -22,13 +22,16 @@ public class Account extends BaseEntity {
     @Column(nullable = false)
     private String actNm;
 
+    @Column(nullable = false)
     private String actEnNm;
 
     @Column(nullable = false)
     private char actGroup;
 
+    @Column(nullable = false)
     private String zipCd;
 
+    @Column(nullable = false)
     private String addr1;
 
     private String addr2;

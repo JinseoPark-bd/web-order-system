@@ -1,6 +1,8 @@
 package com.dai.wos.domain.item.entity;
 
 import com.dai.wos.baseEntity.BaseEntity;
+import com.dai.wos.domain.category.entity.Category;
+import com.dai.wos.domain.owner.entity.Owner;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,14 +18,15 @@ public class Item extends BaseEntity {
     @Column(nullable = false)
     private String itemNm;
 
-    @ManyToOne
-    @JoinColumn(name="OWNER_ID")
-    private String ownerId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "OWNER_ID", nullable = false)
+    private Owner owner;
 
-    @ManyToOne
-    @JoinColumn(name="CATE_ID")
-    private String cateId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CATE_ID",nullable = false)
+    private Category category;
 
+    @Column(nullable = false)
     private int itemCount;
 
 }

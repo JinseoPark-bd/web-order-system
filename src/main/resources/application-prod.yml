@@ -8,7 +8,7 @@ spring:
     database: oracle
     database-platform: org.hibernate.dialect.OracleDialect
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create-drop  # none : DB에 TABLE 만들어 놔야 함.
     properties:
       hibernate:
         format_sql: true

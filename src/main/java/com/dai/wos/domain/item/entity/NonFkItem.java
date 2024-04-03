@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(indexes = @Index(name="IX_non_fk_item_user_id"), columnList = "user_id")
-@Entity
+//@Table(indexes = @Index(name="IX_non_fk_item_user_id", columnList = "user_id"))
+//@Entity
 public class NonFkItem {
 
     @Id

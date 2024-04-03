@@ -15,21 +15,23 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@SequenceGenerator(name="CART_SEQ_GENERATOR", sequenceName = "CART_SEQ", initialValue = 1, allocationSize = 50)
 @Entity(name = "OJT_OMS_CART_JPA")
 public class Cart {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String cartId;
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CART_SEQ_GENERATOR")
+    private Long cartId;
 
     //주인이 아니면 mappedBy 속성으로 주인 선정
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="USER_ID")
-    private User userId;
+    @JoinColumn(name = "USER_ID",nullable = false)
+    private User user;
 
-    @OneToMany
-    @JoinColumn(name = "CART_ID")
-    private List<Item> items = new ArrayList<>();
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ITEM_ID",nullable = false)
+    private Item item;
 
+    @Column(nullable = false)
     private int itemCount;
 }

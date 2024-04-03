@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Owner {
 
     @Id
-    private String ownerId;
+    private String owner_id;
 
     @Column(nullable = false)
     private String ownerNm;

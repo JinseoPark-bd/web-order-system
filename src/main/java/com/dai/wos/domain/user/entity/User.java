@@ -7,7 +7,7 @@ import lombok.*;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name = "OJT_OMS_USER_JPA")
+@Entity(name = "OJT_OMS_USER")
 public class User extends BaseEntity {
 
     @Id
@@ -19,10 +19,12 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private String userNm;
 
-    private char userGroup;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private UserGroup userGroup;
 
-    @ManyToOne
-    @JoinColumn(name = "OWNER_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "OWNER_ID" ,nullable = false)
     private Owner owner;
 
     private String userTel;
@@ -32,8 +34,10 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private char userUse;
 
+    private String roles;
+
     @Builder
-    private User (String userId, String userPwd, String userNm, char userGroup, Owner owner, String userTel, String userEmail) {
+    private User (String userId, String userPwd, String userNm, UserGroup userGroup, Owner owner, String userTel, String userEmail) {
         this.userId = userId;
         this.userPwd = userPwd;
         this.userNm = userNm;
@@ -41,6 +45,7 @@ public class User extends BaseEntity {
         this.owner = owner;
         this.userTel = userTel;
         this.userEmail = userEmail;
+        this.userUse = 'y';
     }
 
 }

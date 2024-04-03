@@ -8,9 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @AllArgsConstructor
@@ -19,25 +16,25 @@ import java.util.List;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long seq;
 
-    @ManyToOne
-    @JoinColumn(name = "ACT_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ACT_ID",nullable = false)
     private Account account;
 
     @Column(nullable = false)
     private String actNm;
 
-    @OneToOne
-    @JoinColumn(name="ITEM_ID")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name= "ITEM_ID",nullable = false)
     private Item item;
 
     @Column(nullable = false)
     private String itemNm;
 
-    @ManyToOne
-    @JoinColumn(name="OWNER_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "OWNER_ID",nullable = false)
     private Owner owner;
 
     @Column(nullable = false)

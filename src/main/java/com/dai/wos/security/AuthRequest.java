@@ -4,6 +4,9 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+/**
+ * 인증 정보 저장 DTO 클래스
+ */
 @Data
 public class AuthRequest {
     @NotNull(message = "ID cannot be null")

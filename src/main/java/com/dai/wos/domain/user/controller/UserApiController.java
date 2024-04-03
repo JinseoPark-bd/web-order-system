@@ -2,6 +2,7 @@ package com.dai.wos.domain.user.controller;
 
 import com.dai.wos.domain.user.controller.dto.UserLoginRequestDto;
 import com.dai.wos.domain.user.service.UserService;
+import com.dai.wos.domain.user.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserApiController {
 
-    private final UserService userService;
+    private final UserServiceImpl userServiceImpl;
 
 //    @PostMapping("/login")
 //    public ResponseEntity<String> login(@RequestBody UserLoginRequestDto request) throws Exception {

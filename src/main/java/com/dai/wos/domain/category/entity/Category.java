@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Getter
 @Builder
@@ -20,4 +21,5 @@ public class Category {
 
     @Column(nullable = false)
     private String cateNm;
+
 }
