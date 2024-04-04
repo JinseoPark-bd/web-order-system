@@ -12,20 +12,20 @@ import java.util.List;
 @RestController
 public class CartController {
 
-    // 장바구니 담기
-    @PostMapping("/api/cart")
-    public Response createCart() {
-
-    }
-
-    // 장바구니 조회
-    @GetMapping("/api/cart")
-    public Response findall() {
-
-    }
-
-
-    // 장바구니 아이템 삭제
-    @DeleteMapping("/api/cart/{cartItemId}")
-    // 장바구니 주문
+//    // 장바구니 담기
+//    @PostMapping("/api/cart")
+//    public Response createCart() {
+//
+//    }
+//
+//    // 장바구니 조회
+//    @GetMapping("/api/cart")
+//    public Response findall() {
+//
+//    }
+//
+//
+//    // 장바구니 아이템 삭제
+//    @DeleteMapping("/api/cart/{cartItemId}")
+//    // 장바구니 주문
 }

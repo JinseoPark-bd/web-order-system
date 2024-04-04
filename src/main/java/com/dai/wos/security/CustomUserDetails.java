@@ -10,13 +10,13 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class UserInfoUserDetails implements UserDetails {
+public class CustomUserDetails implements UserDetails {
     private String id;
     private String password;
     private List<GrantedAuthority> authorities;
     private User user;
 
-    public UserInfoUserDetails(User user) {
+    public CustomUserDetails(User user) {
         this.user = user;
         this.id = user.getUserId();
         this.password = user.getUserPwd();

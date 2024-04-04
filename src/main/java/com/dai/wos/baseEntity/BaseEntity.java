@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -22,12 +24,14 @@ public abstract class BaseEntity {
     @Column(nullable = false)
     private LocalDateTime createDt;
 
-    @Column(nullable = false)
+    @CreatedBy
+    //@Column(nullable = false)
     private String createId;
 
     @LastModifiedDate
     private LocalDateTime editDt;
 
+    @LastModifiedBy
     private String editId;
 
 }

@@ -8,12 +8,32 @@ import axios from 'axios';
 
 const OrderPage = () => {
   const [ todayDate, setTodayDate ] = useState(new Date());
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const [ orderItem, setOrderItem ] = useState({
+    date : todayDate,
+    actId : '',
+    itemId : '',
+    quantity : 0
+  });
 
-    await axios
-      .post("http://localhost:8080/order")
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setOrderItem(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+
+  const orderSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:8080/api/test', orderItem);
+      console.log('주문이 추가되었습니다:', response.data);
+    } catch (error) {
+      console.log('주문 추가에 실패하였습니다.', error);
+    }
+  };
+
 
   return (
     <BasicLayout>
@@ -30,26 +50,26 @@ const OrderPage = () => {
             </div>
           </h1>
           <hr className="width-300px my-3"></hr>
-          <div className="item grid gap-5 grid-cols-2">
-            <form onSubmit={handleSubmit}>
+          <form onSubmit={orderSubmit}>
+            <div className="item grid gap-5 grid-cols-2">
               <div className="flex flex-col space-y-1.5 m-3">
                 <label htmlFor="order_date">주문 일자</label>
                 <ReactDatePicker disabled selected={todayDate} placeholderText={todayDate}/>
               </div>
               <div className="flex flex-col space-y-1.5 m-3">
                 <label htmlFor="account">거래처</label>
-                <textarea id="account" placeholder="Account" required />
+                <input name="actId" value={orderItem.actId} onChange={handleChange} placeholder="Account" required type="text" />
               </div>
               <div className="flex flex-col space-y-1.5 m-3">
                 <label htmlFor="item">상품선택</label>
-                <input id="item" placeholder="Item" required type="number" />
+                <input name="itemId" value={orderItem.itemId} onChange={handleChange} placeholder="Item" required type="text" />
               </div>
               <div className="flex flex-col space-y-1.5 m-3">
                 <label htmlFor="quantity">수량</label>
-                <input id="quantity" placeholder="Quantity" required type="number" />
+                <input id="quantity" value={orderItem.quantity} onChange={handleChange} placeholder="Quantity" required type="number" />
               </div>
             </div>
-            <Button className="w-20 h-10 text-sm font-medium p-1 rounded bg-[#4754C9] mt-10">상품추가</Button>
+            <Button type="submit" onClick={orderSubmit} className="w-20 h-10 text-sm font-medium p-1 rounded bg-[#4754C9] mt-10">상품추가</Button>
           </form>
           <hr className="width-300px my-3"></hr>
           <div className="item_list">

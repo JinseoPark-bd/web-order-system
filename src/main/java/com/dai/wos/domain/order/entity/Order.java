@@ -23,14 +23,14 @@ public class Order {
     @JoinColumn(name = "ACT_ID",nullable = false)
     private Account account;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 200)
     private String actNm;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "ITEM_ID",nullable = false)
     private Item item;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 200)
     private String itemNm;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -40,7 +40,7 @@ public class Order {
     @Column(nullable = false)
     private int ordCnt;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 10)
     private String unit;
 
     @Builder

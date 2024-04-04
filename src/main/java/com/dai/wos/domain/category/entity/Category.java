@@ -1,5 +1,6 @@
 package com.dai.wos.domain.category.entity;
 
+import com.dai.wos.baseEntity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -14,7 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "OJT_OMS_CATEGORY_JPA")
-public class Category {
+public class Category extends BaseEntity {
 
     @Id
     private String cateId;

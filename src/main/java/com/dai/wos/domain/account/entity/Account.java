@@ -17,18 +17,19 @@ import lombok.NoArgsConstructor;
 public class Account extends BaseEntity {
 
     @Id
+    @Column(length = 50)
     private String actId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 200)
     private String actNm;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 200)
     private String actEnNm;
 
     @Column(nullable = false)
     private char actGroup;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 6)
     private String zipCd;
 
     @Column(nullable = false)
@@ -36,10 +37,13 @@ public class Account extends BaseEntity {
 
     private String addr2;
 
+    @Column(length = 50)
     private String actTel;
 
+    @Column(length = 50)
     private String actManager;
 
+    @Column(length = 20)
     private String taxNo;
 
 }

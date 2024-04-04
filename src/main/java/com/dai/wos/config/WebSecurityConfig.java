@@ -1,10 +1,10 @@
 package com.dai.wos.config;
 
-import com.dai.wos.security.UserInfoRepository;
-import com.dai.wos.security.UserInfoUserDetailsService;
+import com.dai.wos.domain.user.repository.UserRepository;
+import com.dai.wos.security.CustomUserDetailsService;
 import com.dai.wos.security.exception.CustomAccessDeniedHandler;
 import com.dai.wos.security.exception.CustomAuthenticationEntryPoint;
-import com.dai.wos.security.jwt.JwtAuthenticationFilter;
+import com.dai.wos.security.jwt.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,8 +36,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class WebSecurityConfig {
 
-    private final JwtAuthenticationFilter jwtAuthenticationFilter;
-    private final UserInfoRepository userInfoRepository;
+    private final JwtAuthFilter jwtAuthFilter;
+    private final UserRepository userRepository;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -51,12 +51,14 @@ public class WebSecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
-                            auth.requestMatchers("/login").permitAll()
-                                    .requestMatchers("/api/**").authenticated();
+                            auth
+                                    .requestMatchers("/api/**").permitAll();
+                                    //.requestMatchers("/api/**").authenticated()
+                                    //.requestMatchers("/api/admin").hasRole("ADMIN");
                 })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling(authManager -> authManager
                         .authenticationEntryPoint(authenticationEntryPoint())
                         .accessDeniedHandler(accessDeniedHandler()))
@@ -81,7 +83,7 @@ public class WebSecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new UserInfoUserDetailsService(userInfoRepository);
+        return new CustomUserDetailsService(userRepository);
     }
 
     @Bean

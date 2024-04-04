@@ -11,38 +11,42 @@ import lombok.*;
 public class User extends BaseEntity {
 
     @Id
+    @Column(length = 30)
     private String userId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String userPwd;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 40)
     private String userNm;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private UserGroup userGroup;
+    //@Enumerated(EnumType.STRING)
+    //    //@Column(nullable = false)
+    //    //private UserGroup userGroup;
+    //
+    //    //@ManyToOne(fetch = FetchType.LAZY)
+    //    //@JoinColumn(name = "OWNER_ID" ,nullable = false)
+    //    //private Owner owner;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "OWNER_ID" ,nullable = false)
-    private Owner owner;
-
+    @Column(length = 40)
     private String userTel;
 
+    @Column(length = 100)
     private String userEmail;
 
     @Column(nullable = false)
     private char userUse;
 
+    @Column(nullable = false, length = 10)
     private String roles;
 
     @Builder
-    private User (String userId, String userPwd, String userNm, UserGroup userGroup, Owner owner, String userTel, String userEmail) {
+    private User (String userId, String userPwd, String userNm, String userTel, String userEmail) {
         this.userId = userId;
         this.userPwd = userPwd;
         this.userNm = userNm;
-        this.userGroup = userGroup;
-        this.owner = owner;
+//        this.userGroup = userGroup;
+//        this.owner = owner;
         this.userTel = userTel;
         this.userEmail = userEmail;
         this.userUse = 'y';

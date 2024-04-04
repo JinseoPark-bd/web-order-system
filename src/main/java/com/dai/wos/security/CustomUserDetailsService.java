@@ -1,6 +1,7 @@
 package com.dai.wos.security;
 
 import com.dai.wos.domain.user.entity.User;
+import com.dai.wos.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,15 +13,15 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class UserInfoUserDetailsService implements UserDetailsService {
-    private final UserInfoRepository repository;
+public class CustomUserDetailsService implements UserDetailsService {
+    private final UserRepository repository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> optionalUser = repository.findById(username);
         return optionalUser
-                .map(UserInfoUserDetails::new)
-                .orElseThrow(() -> new UsernameNotFoundException("user not found " + username));
+                .map(CustomUserDetails::new)
+                .orElseThrow(() -> new UsernameNotFoundException("아이디가 존재하지 않습니다."));
     }
 }
 

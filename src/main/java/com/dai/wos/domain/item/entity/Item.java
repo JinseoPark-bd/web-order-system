@@ -13,9 +13,10 @@ import lombok.*;
 @Entity(name = "OJT_OMS_ITEM_JPA")
 public class Item extends BaseEntity {
     @Id
+    @Column(length = 50)
     private String itemId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 200)
     private String itemNm;
 
     @ManyToOne(fetch = FetchType.LAZY)

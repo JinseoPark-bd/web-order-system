@@ -16,14 +16,18 @@ import lombok.NoArgsConstructor;
 public class Owner {
 
     @Id
+    @Column(length = 50)
     private String owner_id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 200)
     private String ownerNm;
 
+    @Column(length = 50)
     private String ceoNm;
 
+    @Column(length = 40)
     private String ownerTel;
 
+    @Column(length = 20)
     private String ownerFax;
 }

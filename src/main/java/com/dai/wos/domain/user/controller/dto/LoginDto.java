@@ -1,4 +1,4 @@
-package com.dai.wos.security;
+package com.dai.wos.domain.user.controller.dto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -8,7 +8,7 @@ import lombok.Data;
  * 인증 정보 저장 DTO 클래스
  */
 @Data
-public class AuthRequest {
+public class LoginDto {
     @NotNull(message = "ID cannot be null")
     @Size(min = 5, message = "ID not be less than 5 characters")
     private String id;
