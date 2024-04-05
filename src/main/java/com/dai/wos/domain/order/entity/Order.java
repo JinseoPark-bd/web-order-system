@@ -44,13 +44,13 @@ public class Order {
     private String unit;
 
     @Builder
-    private Order (Account account, Item item, Owner owner, int ordCnt, String unit) {
+    private Order (Account account, Item item, Owner owner, int ordCnt) {
         this.account = account;
         this.actNm = account.getActNm();
         this.item = item;
         this.itemNm = item.getItemNm();
         this.owner = owner;
         this.ordCnt = ordCnt;
-        this.unit = unit;
+        this.unit = item.getUnit();
     }
 }

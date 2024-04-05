@@ -28,6 +28,9 @@ public class Item extends BaseEntity {
     private Category category;
 
     @Column(nullable = false)
-    private int itemCount;
+    private int quantity;
+
+    @Column(nullable = false, length = 10)
+    private String unit;
 
 }

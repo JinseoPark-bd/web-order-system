@@ -7,12 +7,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @SequenceGenerator(name="CART_SEQ_GENERATOR", sequenceName = "CART_SEQ", initialValue = 1, allocationSize = 50)
@@ -24,14 +25,13 @@ public class Cart {
     private Long cartId;
 
     //주인이 아니면 mappedBy 속성으로 주인 선정
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID",nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ITEM_ID",nullable = false)
-    private Item item;
-
-    @Column(nullable = false)
-    private int itemCount;
+    @Builder
+    public Cart(User user) {
+        this.user = user;
+    }
 }
