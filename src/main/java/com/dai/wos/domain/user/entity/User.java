@@ -17,16 +17,16 @@ public class User extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String userPwd;
 
-    @Column(nullable = false, length = 40)
+    @Column(nullable = false, length = 50)
     private String userNm;
 
-    //@Enumerated(EnumType.STRING)
-    //    //@Column(nullable = false)
-    //    //private UserGroup userGroup;
-    //
-    //    //@ManyToOne(fetch = FetchType.LAZY)
-    //    //@JoinColumn(name = "OWNER_ID" ,nullable = false)
-    //    //private Owner owner;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private UserRole userRole;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "OWNER_ID" ,nullable = false)
+    private Owner owner;
 
     @Column(length = 40)
     private String userTel;
@@ -37,16 +37,14 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private char userUse;
 
-    @Column(nullable = false, length = 10)
-    private String roles;
 
     @Builder
-    private User (String userId, String userPwd, String userNm, String userTel, String userEmail) {
+    private User (String userId, String userPwd, String userNm, String userTel, String userEmail, UserRole userRole, Owner owner) {
         this.userId = userId;
         this.userPwd = userPwd;
         this.userNm = userNm;
-//        this.userGroup = userGroup;
-//        this.owner = owner;
+        this.userRole = userRole;
+        this.owner = owner;
         this.userTel = userTel;
         this.userEmail = userEmail;
         this.userUse = 'y';

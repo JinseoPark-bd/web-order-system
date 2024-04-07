@@ -14,7 +14,7 @@ import org.hibernate.annotations.OnDeleteAction;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "OJT_OMS_CATE_ITEM")
-public class CartItem extends BaseEntity {
+public class CartItem {
 
     @Id
     private Long cartItemId;

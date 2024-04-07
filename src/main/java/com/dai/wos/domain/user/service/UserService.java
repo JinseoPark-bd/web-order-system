@@ -18,4 +18,7 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    public User findById(String userId) {
+        return userRepository.findById(userId).orElseThrow();
+    }
 }

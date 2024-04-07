@@ -23,12 +23,6 @@ public class Account extends BaseEntity {
     @Column(nullable = false, length = 200)
     private String actNm;
 
-    @Column(nullable = false, length = 200)
-    private String actEnNm;
-
-    @Column(nullable = false)
-    private char actGroup;
-
     @Column(nullable = false, length = 6)
     private String zipCd;
 
@@ -41,9 +35,9 @@ public class Account extends BaseEntity {
     private String actTel;
 
     @Column(length = 50)
-    private String actManager;
+    private String actMng;
 
-    @Column(length = 20)
+    @Column(nullable = false, length = 20)
     private String taxNo;
 
 }

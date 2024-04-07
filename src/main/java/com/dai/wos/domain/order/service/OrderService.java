@@ -43,12 +43,16 @@ public class OrderService {
                     .account(account)
                     .item(item)
                     .owner(item.getOwner())
-                    .ordCnt(cartItem.getQuantity())
+                    .quantity(cartItem.getQuantity())
                     .build();
             orderRepository.save(order);
         }
 
         return "주문이 등록되었습니다.";
     }
+
+    // 시작-종료 날짜 순 주문 리스트
+
+
 
 }

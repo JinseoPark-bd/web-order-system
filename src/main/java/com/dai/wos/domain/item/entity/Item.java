@@ -19,6 +19,9 @@ public class Item extends BaseEntity {
     @Column(nullable = false, length = 200)
     private String itemNm;
 
+    @Column(length = 200)
+    private String itemEnNm;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "OWNER_ID", nullable = false)
     private Owner owner;
@@ -32,5 +35,9 @@ public class Item extends BaseEntity {
 
     @Column(nullable = false, length = 10)
     private String unit;
+
+    public void updateQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
 }

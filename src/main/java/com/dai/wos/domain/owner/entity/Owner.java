@@ -1,5 +1,6 @@
 package com.dai.wos.domain.owner.entity;
 
+import com.dai.wos.baseEntity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "OJT_OMS_OWNER_JPA")
-public class Owner {
+public class Owner extends BaseEntity {
 
     @Id
     @Column(length = 50)

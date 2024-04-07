@@ -15,7 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "OJT_OMS_CATEGORY_JPA")
-public class Category extends BaseEntity {
+public class Category {
 
     @Id
     private String cateId;

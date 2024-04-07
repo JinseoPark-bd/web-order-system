@@ -1,5 +1,6 @@
 package com.dai.wos.domain.order.entity;
 
+import com.dai.wos.baseEntity.BaseEntity;
 import com.dai.wos.domain.account.entity.Account;
 import com.dai.wos.domain.item.entity.Item;
 import com.dai.wos.domain.owner.entity.Owner;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "OJT_OMS_ORDER_JPA")
-public class Order {
+public class Order extends BaseEntity {
 
     @Id
     //@GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -38,19 +39,19 @@ public class Order {
     private Owner owner;
 
     @Column(nullable = false)
-    private int ordCnt;
+    private int quantity;
 
     @Column(nullable = false, length = 10)
     private String unit;
 
     @Builder
-    private Order (Account account, Item item, Owner owner, int ordCnt) {
+    private Order (Account account, Item item, Owner owner, int quantity) {
         this.account = account;
         this.actNm = account.getActNm();
         this.item = item;
         this.itemNm = item.getItemNm();
         this.owner = owner;
-        this.ordCnt = ordCnt;
+        this.quantity = quantity;
         this.unit = item.getUnit();
     }
 }
