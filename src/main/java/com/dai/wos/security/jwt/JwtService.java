@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SecureDigestAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -15,15 +16,23 @@ import java.util.function.Function;
 
 @Component
 public class JwtService {
-    public static final String SECRET = "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437";
-    public static final SecretKey KEY = Keys.hmacShaKeyFor(SECRET.getBytes());
+    private final SecretKey key;
+    private final long expTime;
+
     private final static SecureDigestAlgorithm<SecretKey, SecretKey> ALGORITHM = Jwts.SIG.HS256;
-    public static final int ACCESS_EXPIRE = 3600;
+
+    public JwtService (
+            @Value("${jwt.secret}") String secretKey,
+            @Value("${jwt.expiration_time}") long expTime
+    ) {
+        this.key = Keys.hmacShaKeyFor(secretKey.getBytes());
+        this.expTime = expTime;
+    }
 
     private Claims extractAllClaims(String token) {
         return Jwts
                 .parser()
-                .verifyWith(KEY)
+                .verifyWith(key)
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
@@ -54,7 +63,7 @@ public class JwtService {
     public boolean validateToken(String token) {
         try {
             Jwts.parser()
-                    .verifyWith(KEY)
+                    .verifyWith(key)
                     .build()
                     .parseSignedClaims(token);
             return true;
@@ -67,10 +76,10 @@ public class JwtService {
 
     public String generateToken(String userName){
         // ACCESS_EXPIRE 3600초 => 60분
-        Date exprireDate = Date.from(Instant.now().plusSeconds(ACCESS_EXPIRE));
+        Date exprireDate = Date.from(Instant.now().plusSeconds(expTime));
 
         return Jwts.builder() //JwtBuilder
-                .signWith(KEY, ALGORITHM)
+                .signWith(key, ALGORITHM)
                 .subject(userName)
                 .issuedAt(new Date())
                 .expiration(exprireDate)

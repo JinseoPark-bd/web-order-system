@@ -23,12 +23,12 @@ public class ItemService {
     private final UserService userService;
 
     // 아이템 리스트 불러오기
-    public List<ItemResponseDto> findAllByOwner (String userId) {
-        User user = userService.findById(userId);
-        return itemRepository.findAllByOwner(user.getOwner()).stream()
-                .map(item -> ItemResponseDto.toDto(item))
-                .collect(Collectors.toList());
-    }
+//    public List<ItemResponseDto> findAllByOwner (String userId) {
+//        User user = userService.findById(userId);
+//        return itemRepository.findAllByOwner(user.getOwner()).stream()
+//                .map(item -> ItemResponseDto.toDto(item))
+//                .collect(Collectors.toList());
+//    }
 
     // 아이템 리스트 불러오기 query
     public void findAllByOwner_2 (String ownerId) {

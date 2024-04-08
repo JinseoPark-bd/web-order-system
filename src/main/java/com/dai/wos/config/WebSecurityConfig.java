@@ -52,7 +52,7 @@ public class WebSecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
                             auth
-                                    .requestMatchers("/api/**").permitAll();
+                                    .requestMatchers("/**").permitAll();
                                     //.requestMatchers("/api/**").authenticated()
                                     //.requestMatchers("/api/admin").hasRole("ADMIN");
                 })

@@ -16,7 +16,7 @@ public class AccountService {
         return accountRepository.findAll();
     }
 
-    public Account findByActId(String actId) {
+    public Account findById(String actId) {
         return accountRepository.findById(actId).orElseThrow();
     }
 }

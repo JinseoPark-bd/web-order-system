@@ -17,9 +17,9 @@ public class AccountController {
     private final AccountService accountService;
 
     // 거래처 코드로 검색
-    @GetMapping("/api/accounts")
+    @GetMapping("/api/account")
     public AccountResponseDto findById(@RequestParam String actId) {
-        return AccountResponseDto.toDto(accountService.findByActId(actId));
+        return AccountResponseDto.toDto(accountService.findById(actId));
     }
 
     // 거래처 리스트 불러오기

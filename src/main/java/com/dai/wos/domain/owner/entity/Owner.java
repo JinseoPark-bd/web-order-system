@@ -18,7 +18,7 @@ public class Owner extends BaseEntity {
 
     @Id
     @Column(length = 50)
-    private String owner_id;
+    private String ownerId;
 
     @Column(nullable = false, length = 200)
     private String ownerNm;

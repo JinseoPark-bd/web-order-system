@@ -18,11 +18,11 @@ public class ItemController {
     private final ItemService itemService;
 
     //상품 조회
-    @GetMapping("/list")
-    @PreAuthorize("isAuthenticated()")
-    public List<ItemResponseDto> findAll(@AuthenticationPrincipal User user) {
-        return itemService.findAllByOwner(user.getUsername());
-    }
+//    @GetMapping("/list")
+//    @PreAuthorize("isAuthenticated()")
+//    public List<ItemResponseDto> findAll(@AuthenticationPrincipal User user) {
+//        return itemService.findAllByOwner(user.getUsername());
+//    }
 
     @GetMapping("/{itemId}")
     public ItemResponseDto findById(@PathVariable String itemId) {

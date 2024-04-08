@@ -11,16 +11,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CustomUserDetails implements UserDetails {
-    private String id;
-    private String password;
-    private List<GrantedAuthority> authorities;
+    private String id; // 로그인 아이디
+    private String password; // 로그인 패스워드
+    private List<GrantedAuthority> authorities; // 권한
     private User user;
 
     public CustomUserDetails(User user) {
         this.user = user;
         this.id = user.getUserId();
         this.password = user.getUserPwd();
-        this.authorities = Arrays.stream(user.getRoles().split(","))
+        this.authorities = Arrays.stream(user.getUserRole().getRole().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }
