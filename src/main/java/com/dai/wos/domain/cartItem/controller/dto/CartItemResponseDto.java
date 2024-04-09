@@ -1,6 +1,6 @@
-package com.dai.wos.domain.cart.controller.dto;
+package com.dai.wos.domain.cartItem.controller.dto;
 
-import com.dai.wos.domain.cart.entity.CartItem;
+import com.dai.wos.domain.cartItem.entity.CartItem;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

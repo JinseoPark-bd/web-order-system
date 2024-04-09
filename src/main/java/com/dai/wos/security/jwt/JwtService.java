@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SecureDigestAlgorithm;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,8 +19,7 @@ import java.util.function.Function;
 public class JwtService {
     private final SecretKey key;
     private final long expTime;
-
-    private final static SecureDigestAlgorithm<SecretKey, SecretKey> ALGORITHM = Jwts.SIG.HS256;
+    private static final SecureDigestAlgorithm<SecretKey, SecretKey> ALGORITHM = Jwts.SIG.HS256;
 
     public JwtService (
             @Value("${jwt.secret}") String secretKey,
@@ -76,13 +76,13 @@ public class JwtService {
 
     public String generateToken(String userName){
         // ACCESS_EXPIRE 3600초 => 60분
-        Date exprireDate = Date.from(Instant.now().plusSeconds(expTime));
+        Date expriredDate = Date.from(Instant.now().plusSeconds(expTime));
 
         return Jwts.builder() //JwtBuilder
                 .signWith(key, ALGORITHM)
                 .subject(userName)
                 .issuedAt(new Date())
-                .expiration(exprireDate)
+                .expiration(expriredDate)
                 .compact();
     }
 

@@ -1,7 +1,7 @@
 package com.dai.wos.domain.cart.controller;
 
-import com.dai.wos.domain.cart.controller.dto.CartItemRequestDto;
-import com.dai.wos.domain.cart.controller.dto.CartItemResponseDto;
+import com.dai.wos.domain.cartItem.controller.dto.CartItemRequestDto;
+import com.dai.wos.domain.cartItem.controller.dto.CartItemResponseDto;
 import com.dai.wos.domain.cart.service.CartService;
 import com.dai.wos.domain.user.entity.User;
 import com.dai.wos.domain.user.repository.UserRepository;

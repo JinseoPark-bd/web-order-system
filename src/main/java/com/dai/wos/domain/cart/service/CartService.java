@@ -2,11 +2,11 @@ package com.dai.wos.domain.cart.service;
 
 import com.dai.wos.domain.account.entity.Account;
 import com.dai.wos.domain.account.repository.AccountRepository;
-import com.dai.wos.domain.cart.controller.dto.CartItemRequestDto;
-import com.dai.wos.domain.cart.controller.dto.CartItemResponseDto;
+import com.dai.wos.domain.cartItem.controller.dto.CartItemRequestDto;
+import com.dai.wos.domain.cartItem.controller.dto.CartItemResponseDto;
 import com.dai.wos.domain.cart.entity.Cart;
-import com.dai.wos.domain.cart.entity.CartItem;
-import com.dai.wos.domain.cart.repository.CartItemRepository;
+import com.dai.wos.domain.cartItem.entity.CartItem;
+import com.dai.wos.domain.cartItem.repository.CartItemRepository;
 import com.dai.wos.domain.cart.repository.CartRepository;
 import com.dai.wos.domain.item.entity.Item;
 import com.dai.wos.domain.item.repository.ItemRepository;
@@ -24,7 +24,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CartService {
     private final CartRepository cartRepository;
-    private final CartItemRepository cartItemRepository;
     private final ItemRepository itemRepository;
     private final OrderService orderService;
     private final AccountRepository accountRepository;

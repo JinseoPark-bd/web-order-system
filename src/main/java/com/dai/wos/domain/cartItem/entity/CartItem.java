@@ -1,6 +1,7 @@
-package com.dai.wos.domain.cart.entity;
+package com.dai.wos.domain.cartItem.entity;
 
 import com.dai.wos.baseEntity.BaseEntity;
+import com.dai.wos.domain.cart.entity.Cart;
 import com.dai.wos.domain.item.entity.Item;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,7 +14,7 @@ import org.hibernate.annotations.OnDeleteAction;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "OJT_OMS_CATE_ITEM")
+@Entity(name = "OJT_OMS_CATE_ITEM_JPA")
 public class CartItem {
 
     @Id

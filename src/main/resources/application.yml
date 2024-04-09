@@ -2,8 +2,8 @@ spring:
   application:
     name: wos
   profiles:
-    active: prod, secret
+    active: prod
 
 jwt:
   expiration_time: 3600
-  secret: ${jwt.secret}
+  secret: dainformationparkjinseodainformationparkjinseodainformationparkjinseodainformationparkjinseodainformationparkjinseo

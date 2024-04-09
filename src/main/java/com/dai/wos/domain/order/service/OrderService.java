@@ -2,14 +2,11 @@ package com.dai.wos.domain.order.service;
 
 import com.dai.wos.domain.account.entity.Account;
 import com.dai.wos.domain.cart.entity.Cart;
-import com.dai.wos.domain.cart.entity.CartItem;
-import com.dai.wos.domain.cart.repository.CartItemRepository;
+import com.dai.wos.domain.cartItem.entity.CartItem;
+import com.dai.wos.domain.cartItem.repository.CartItemRepository;
 import com.dai.wos.domain.item.entity.Item;
-import com.dai.wos.domain.item.repository.ItemRepository;
 import com.dai.wos.domain.order.entity.Order;
 import com.dai.wos.domain.order.repository.OrderRepository;
-import com.dai.wos.domain.owner.entity.Owner;
-import com.dai.wos.domain.owner.repository.OwnerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

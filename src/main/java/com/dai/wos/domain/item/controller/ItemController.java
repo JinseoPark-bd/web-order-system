@@ -1,7 +1,6 @@
 package com.dai.wos.domain.item.controller;
 
 import com.dai.wos.domain.item.controller.dto.ItemResponseDto;
-import com.dai.wos.domain.item.entity.Item;
 import com.dai.wos.domain.item.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,15 +16,20 @@ import java.util.List;
 public class ItemController {
     private final ItemService itemService;
 
-    //상품 조회
-//    @GetMapping("/list")
-//    @PreAuthorize("isAuthenticated()")
-//    public List<ItemResponseDto> findAll(@AuthenticationPrincipal User user) {
-//        return itemService.findAllByOwner(user.getUsername());
-//    }
+    // 상품 전체 조회
+    @GetMapping("/search")
+    @PreAuthorize("isAuthenticated()")
+    public List<ItemResponseDto> findAll(@AuthenticationPrincipal User user) {
+        return itemService.findAll(user.getUsername());
+    }
 
-    @GetMapping("/{itemId}")
-    public ItemResponseDto findById(@PathVariable String itemId) {
-        return itemService.findById(itemId);
+    // 상품 검색
+    @GetMapping("/search")
+    @PreAuthorize("isAuthenticated()")
+    public List<ItemResponseDto> searchItem(
+            @RequestParam String cateId,
+            @RequestParam String keyword,
+            @AuthenticationPrincipal User user) {
+        return itemService.findByKeyword(user.getUsername(), cateId, keyword);
     }
 }

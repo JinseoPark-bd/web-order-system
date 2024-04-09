@@ -1,4 +1,4 @@
-package com.dai.wos.domain.cart.controller.dto;
+package com.dai.wos.domain.cartItem.controller.dto;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
