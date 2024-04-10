@@ -14,8 +14,9 @@ public class CartItemService {
     private final CartItemRepository cartItemRepository;
     private final ItemService itemService;
 
+    // 카트에 상품 추가
     public void create (CartItemRequestDto req, String userId) {
         ItemResponseDto itemResponseDto = itemService.findById(req.getItemId());
-
     }
+
 }
