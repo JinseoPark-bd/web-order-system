@@ -28,7 +28,7 @@ public class CartService {
     private final OrderService orderService;
     private final AccountRepository accountRepository;
 
-    // 카트 생성
+    // 장바구니 담기
     @Transactional
     public void create(CartItemRequestDto req, User user) throws Exception {
         Item item = itemRepository.findById(req.getItemId()).orElseThrow(ChangeSetPersister.NotFoundException::new);
@@ -51,7 +51,7 @@ public class CartService {
         cartItemRepository.save(cartItem);
     }
 
-    // 전체 조회
+    // 장바구니 조회
     @Transactional(readOnly = true)
     public List<CartItemResponseDto> findAll(User user) throws Exception{
         Cart cart = cartRepository.findByUser(user).orElseThrow(ChangeSetPersister.NotFoundException::new);
@@ -66,7 +66,7 @@ public class CartService {
         return result;
     }
 
-    // 카트에 있는 상품 삭제
+    // 장바구니 품목 단건 삭제
     @Transactional
     public void deleteById(Long id, User user) throws Exception{
         CartItem cartItem = cartItemRepository.findById(id).orElseThrow(ChangeSetPersister.NotFoundException::new);
@@ -79,7 +79,7 @@ public class CartService {
         cartItemRepository.delete(cartItem);
     }
 
-    // 전체 주문하기
+    // 장바구니 주문하기
     @Transactional
     public void orderAll(User user, String actId) throws Exception {
         Cart cart = cartRepository.findByUser(user).orElseThrow(ChangeSetPersister.NotFoundException::new);
