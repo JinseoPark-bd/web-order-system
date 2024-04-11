@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @NoArgsConstructor
@@ -20,16 +21,18 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity {
 
+    @Temporal(TemporalType.DATE)
     @CreatedDate
     @Column(nullable = false)
-    private LocalDateTime createDt;
+    private Date createDt;
 
     @CreatedBy
     //@Column(nullable = false)
     private String createId;
 
+    @Temporal(TemporalType.DATE)
     @LastModifiedDate
-    private LocalDateTime editDt;
+    private Date editDt;
 
     @LastModifiedBy
     private String editId;

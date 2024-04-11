@@ -9,16 +9,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CartItemResponseDto {
-    private Long cartItemId;
     private String itemId;
     private String itemNm;
+    private String cateNm;
     private Integer quantity;
 
     public static CartItemResponseDto toDto(CartItem cartItem) {
         return new CartItemResponseDto(
-                cartItem.getCartItemId(),
                 cartItem.getItem().getItemId(),
                 cartItem.getItem().getItemNm(),
+                cartItem.getItem().getCategory().getCateNm(),
                 cartItem.getQuantity());
     }
 }

@@ -19,4 +19,9 @@ public class CartItemService {
         ItemResponseDto itemResponseDto = itemService.findById(req.getItemId());
     }
 
+    // cartItem 생성
+    public void save (CartItemRequestDto req, String userId) {
+        
+    }
+
 }
