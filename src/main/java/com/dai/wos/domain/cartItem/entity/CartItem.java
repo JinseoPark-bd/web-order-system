@@ -33,6 +33,11 @@ public class CartItem {
     @Column(nullable = false)
     private int quantity;
 
+    public void addQuantity(int quantity) {
+        this.quantity += quantity;
+    }
+
+
     @Builder
     public CartItem(Cart cart, Item item, int quantity) {
         this.cart = cart;
@@ -40,7 +45,4 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    public void addQuantity(int quantity) {
-        this.quantity += quantity;
-    }
 }
