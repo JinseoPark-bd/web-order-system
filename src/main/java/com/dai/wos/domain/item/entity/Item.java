@@ -40,4 +40,12 @@ public class Item extends BaseEntity {
         this.quantity = quantity;
     }
 
+    public void addQuantity(int quantity) {
+        this.quantity += quantity;
+    }
+
+    public void subQuantity (int quantity) {
+        this.quantity -= quantity;
+    }
+
 }

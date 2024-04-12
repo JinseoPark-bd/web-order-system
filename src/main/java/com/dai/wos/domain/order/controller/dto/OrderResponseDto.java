@@ -19,7 +19,7 @@ public class OrderResponseDto {
     private String itemNm; // 제품 명
     private int quantity; //주문 수량
 
-    public OrderResponseDto toDto (Order order) {
+    public static OrderResponseDto toDto (Order order) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         String ymd = dateFormat.format(order.getCreateDt());
         return new OrderResponseDto(

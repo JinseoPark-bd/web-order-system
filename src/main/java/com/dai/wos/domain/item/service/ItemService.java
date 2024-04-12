@@ -7,6 +7,7 @@ import com.dai.wos.domain.item.repository.ItemRepository;
 import com.dai.wos.domain.user.entity.User;
 import com.dai.wos.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +24,11 @@ public class ItemService {
     // 상품ID로 조회
     public ItemResponseDto findById(String itemId) {
         return ItemResponseDto.toDto(itemRepository.findById(itemId).orElseThrow());
+    }
+
+    // entity 가져오기 (장바구니 상품 생성용)
+    public Item getById (String itemId) throws Exception{
+        return itemRepository.findById(itemId).orElseThrow(ChangeSetPersister.NotFoundException::new);
     }
 
      // 상품 리스트

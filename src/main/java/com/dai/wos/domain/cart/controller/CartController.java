@@ -28,7 +28,7 @@ public class CartController {
     public String create(@Valid @RequestBody CartItemRequestDto req) throws Exception {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = userRepository.findByUserNm(authentication.getName()).orElseThrow(ChangeSetPersister.NotFoundException::new);
-        cartService.create(req, user);
+        cartService.create(req, user.getUserId());
         return "장바구니에 상품을 추가하였습니다.";
     }
 
