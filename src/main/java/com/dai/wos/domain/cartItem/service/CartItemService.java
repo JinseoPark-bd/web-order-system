@@ -1,21 +1,16 @@
 package com.dai.wos.domain.cartItem.service;
 
 import com.dai.wos.domain.cart.entity.Cart;
-import com.dai.wos.domain.cart.service.CartService;
 import com.dai.wos.domain.cartItem.controller.dto.CartItemRequestDto;
 import com.dai.wos.domain.cartItem.entity.CartItem;
 import com.dai.wos.domain.cartItem.repository.CartItemRepository;
-import com.dai.wos.domain.item.controller.dto.ItemResponseDto;
 import com.dai.wos.domain.item.entity.Item;
 import com.dai.wos.domain.item.service.ItemService;
-import com.dai.wos.domain.user.entity.User;
-import com.dai.wos.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,16 +18,18 @@ import java.util.Optional;
 public class CartItemService {
     private final CartItemRepository cartItemRepository;
     private final ItemService itemService;
-    private final UserService userService;
 
-    // 카트에 상품 추가
-    public void create (CartItemRequestDto req, String userId) {
-        ItemResponseDto itemResponseDto = itemService.findById(req.getItemId());
+    // 이미 존재하는 상품인지 확인
+    public boolean checkCartItem (Long cartId, String itemId) {
+        return cartItemRepository.findByCartIdAndItemId(cartId, itemId).isPresent();
     }
 
     // 장바구니에 상품 추가
     public void save (CartItemRequestDto req, Cart cart) throws Exception{
         Item item = itemService.getById(req.getItemId());
+        if(checkCartItem(cart.getCartId(), item.getItemId())) {
+
+        }
         CartItem cartItem = CartItem.builder()
                         .cart(cart)
                         .item(item)

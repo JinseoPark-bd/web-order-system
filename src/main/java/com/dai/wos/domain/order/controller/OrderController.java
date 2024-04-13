@@ -18,9 +18,6 @@ import java.util.List;
 public class OrderController {
     private final OrderService orderService;
 
-    // 주문 생성
-    @PreAuthorize("isAuthenticated()")
-    public String
     // 주문 조회
     @GetMapping("/list")
     @PreAuthorize("isAuthenticated()")
