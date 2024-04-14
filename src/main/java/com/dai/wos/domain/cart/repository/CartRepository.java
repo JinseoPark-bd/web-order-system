@@ -11,6 +11,6 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
     Optional<Cart> findByUser(User user);
 
     @Query("SELECT c FROM OJT_OMS_CART_JPA c " +
-            "WHERE c.user = :userId" )
+            "WHERE c.user.userId = :userId" )
     Optional<Cart> findByUserId(String userId);
 }

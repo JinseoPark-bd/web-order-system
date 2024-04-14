@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,17 +26,24 @@ public class CartItemService {
     }
 
     // 장바구니에 상품 추가
-    public void save (CartItemRequestDto req, Cart cart) throws Exception{
+    @Transactional
+    public String save (CartItemRequestDto req, Cart cart) throws Exception{
         Item item = itemService.getById(req.getItemId());
-        if(checkCartItem(cart.getCartId(), item.getItemId())) {
-
+        Optional<CartItem> optionalCartItem = cartItemRepository.findByCartIdAndItemId(cart.getCartId(), item.getItemId());
+        if(optionalCartItem.isPresent()) {
+            optionalCartItem.get().addQuantity(req.getQuantity());
+            return "상품이 장바구니에 존재합니다.";
         }
+
+//        if(checkCartItem(cart.getCartId(), item.getItemId())) {
+//        }
         CartItem cartItem = CartItem.builder()
                         .cart(cart)
                         .item(item)
                         .quantity(req.getQuantity())
                         .build();
         cartItemRepository.save(cartItem);
+        return "장바구니에 상품이 추가되었습니다.";
     }
 
     // 장바구니 조회

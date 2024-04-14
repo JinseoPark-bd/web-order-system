@@ -14,7 +14,7 @@ import org.hibernate.annotations.OnDeleteAction;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "OJT_OMS_CATE_ITEM_JPA")
+@Entity(name = "OJT_OMS_CART_ITEM_JPA")
 public class CartItem {
 
     @Id

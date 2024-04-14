@@ -19,7 +19,7 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
     Optional<CartItem> findByCartIdAndItemId(Long cartId, String itemId);
 
     @Modifying
-    @Query("delete from OJT_OMS_CART_ITEM_JPA ci where ci.cart.id = :cartId ")
+    @Query("delete from OJT_OMS_CART_ITEM_JPA ci where ci.cart.cartId = :cartId ")
     void deleteByCartId(Long cartId);
 }
 
