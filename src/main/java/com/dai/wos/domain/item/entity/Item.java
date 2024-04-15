@@ -7,19 +7,18 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "OJT_OMS_ITEM_JPA")
 public class Item extends BaseEntity {
     @Id
-    @Column(length = 50)
+    @Column(length = 25)
     private String itemId;
 
-    @Column(nullable = false, length = 200)
+    @Column(nullable = false, length = 100)
     private String itemNm;
 
-    @Column(length = 200)
+    @Column(length = 100)
     private String itemEnNm;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -27,13 +26,13 @@ public class Item extends BaseEntity {
     private Owner owner;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CATE_ID",nullable = false)
+    @JoinColumn(name = "CATEGORY_ID",nullable = false)
     private Category category;
 
     @Column(nullable = false)
     private int quantity;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 5)
     private String unit;
 
     public void updateQuantity(int quantity) {
@@ -46,6 +45,16 @@ public class Item extends BaseEntity {
 
     public void subQuantity (int quantity) {
         this.quantity -= quantity;
+    }
+
+    @Builder
+    private Item(String itemId, String itemNm, Owner owner, Category category, int quantity, String unit) {
+        this.itemId = itemId;
+        this.itemNm = itemNm;
+        this.owner = owner;
+        this.category = category;
+        this.quantity = quantity;
+        this.unit = unit;
     }
 
 }

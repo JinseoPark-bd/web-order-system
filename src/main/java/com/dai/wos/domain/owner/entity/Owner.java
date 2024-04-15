@@ -10,7 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "OJT_OMS_OWNER_JPA")
@@ -31,4 +30,10 @@ public class Owner extends BaseEntity {
 
     @Column(length = 20)
     private String ownerFax;
+
+    @Builder
+    private Owner(String ownerId, String ownerNm) {
+        this.ownerId = ownerId;
+        this.ownerNm = ownerNm;
+    }
 }

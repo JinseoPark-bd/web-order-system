@@ -47,12 +47,12 @@ public class CartController {
     }
 
     // 장바구니 물건 전체 구매
-    @PostMapping("")
+    @PostMapping("/order")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("isAuthenticated()")
-    public String buyingAll(@PathVariable("actId") String actId, @AuthenticationPrincipal User user) throws Exception{
+    public String orderAll(@RequestParam String accountId, @AuthenticationPrincipal User user) throws Exception{
         String userId = user.getUsername();
-        cartService.orderAll(actId, userId);
+        cartService.orderAll(accountId, userId);
         return "주문이 완료되었습니다.";
     }
 }

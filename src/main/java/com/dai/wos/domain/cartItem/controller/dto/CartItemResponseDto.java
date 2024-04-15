@@ -11,14 +11,14 @@ import lombok.NoArgsConstructor;
 public class CartItemResponseDto {
     private String itemId;
     private String itemNm;
-    private String cateNm;
+    private String categoryNm;
     private Integer quantity;
 
     public static CartItemResponseDto toDto(CartItem cartItem) {
         return new CartItemResponseDto(
                 cartItem.getItem().getItemId(),
                 cartItem.getItem().getItemNm(),
-                cartItem.getItem().getCategory().getCateNm(),
+                cartItem.getItem().getCategory().getCategoryNm(),
                 cartItem.getQuantity());
     }
 }

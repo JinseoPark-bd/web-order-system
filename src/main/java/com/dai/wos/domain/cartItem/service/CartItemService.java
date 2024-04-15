@@ -52,11 +52,13 @@ public class CartItemService {
     }
 
     // 장바구니 단 건 삭제 cartItemId
+    @Transactional
     public void delete (Long cartItemId) {
         cartItemRepository.deleteById(cartItemId);
     }
 
     // 장바구니 비우기
+    @Transactional
     public void deleteAll (Long cartId) {
         cartItemRepository.deleteByCartId(cartId);
     }

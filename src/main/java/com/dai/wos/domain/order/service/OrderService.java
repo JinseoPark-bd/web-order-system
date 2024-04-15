@@ -29,10 +29,12 @@ public class OrderService {
     private final CartItemService cartItemService;
     private final UserService userService;
 
+    @Transactional
     public Order save (Order order) {
         return orderRepository.save(order);
     }
 
+    @Transactional
     public String create(Cart cart, Account account) {
         /**
          * 1. Cart 가져오기
@@ -51,6 +53,7 @@ public class OrderService {
                         .quantity(cartItem.getQuantity())
                         .build();
                 orderRepository.save(order);
+                cartItemService.delete(cartItem.getCartItemId()); // 주문 한 상품 장바구니에서 제거 /
             }
         }
 

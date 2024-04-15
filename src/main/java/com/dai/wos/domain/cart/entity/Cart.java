@@ -16,12 +16,15 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@SequenceGenerator(name="CART_SEQ_GENERATOR", sequenceName = "CART_SEQ", initialValue = 1, allocationSize = 50)
+@SequenceGenerator(
+        name="CART_ID_GENERATOR",
+        sequenceName = "CART_SEQ",
+        initialValue = 1, allocationSize = 1)
 @Entity(name = "OJT_OMS_CART_JPA")
 public class Cart {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CART_SEQ_GENERATOR")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CART_ID_GENERATOR")
     private Long cartId;
 
     //주인이 아니면 mappedBy 속성으로 주인 선정

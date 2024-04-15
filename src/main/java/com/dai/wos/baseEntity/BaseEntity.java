@@ -23,11 +23,11 @@ public abstract class BaseEntity {
 
     @Temporal(TemporalType.DATE)
     @CreatedDate
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private Date createDt;
 
     @CreatedBy
-    //@Column(nullable = false)
+    // @Column(nullable = false, length = 15)
     private String createId;
 
     @Temporal(TemporalType.DATE)
@@ -35,6 +35,7 @@ public abstract class BaseEntity {
     private Date editDt;
 
     @LastModifiedBy
+    @Column(length = 15)
     private String editId;
 
 }

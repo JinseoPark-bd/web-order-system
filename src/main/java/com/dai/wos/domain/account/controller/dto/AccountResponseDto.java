@@ -9,14 +9,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AccountResponseDto {
-    private String actId;
-    private String actNm;
+    private String accountId;
+    private String accountNm;
     private String addr;
 
     public static AccountResponseDto toDto(Account account) {
         return new AccountResponseDto(
-                account.getActId(),
-                account.getActNm(),
+                account.getAccountId(),
+                account.getAccountNm(),
                 account.getAddr1() + " " + account.getAddr2());
     }
 }

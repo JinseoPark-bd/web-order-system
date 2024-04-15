@@ -25,6 +25,6 @@ public class TestDto {
     private String etc;
 
     public static TestDto toDto(Category category) {
-        return new TestDto(category.getCateId(), category.getCateNm(), "안녕하세요.");
+        return new TestDto(category.getCategoryId(), category.getCategoryNm(), "안녕하세요.");
     }
 }

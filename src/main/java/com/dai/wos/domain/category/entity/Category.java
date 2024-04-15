@@ -11,16 +11,21 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Getter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "OJT_OMS_CATEGORY_JPA")
 public class Category {
 
     @Id
-    private String cateId;
+    @Column(length = 25)
+    private String categoryId;
 
-    @Column(nullable = false)
-    private String cateNm;
+    @Column(nullable = false, length = 25)
+    private String categoryNm;
+
+    @Builder
+    private Category(String categoryId, String categoryNm) {
+        this.categoryId = categoryId;
+        this.categoryNm = categoryNm;
+    }
 
 }

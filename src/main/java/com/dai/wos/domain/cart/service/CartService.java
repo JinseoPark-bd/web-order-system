@@ -87,10 +87,10 @@ public class CartService {
 
     // 장바구니 주문하기 -> 재고확인 -> 재고부족 상품은 제외하고 실행
     @Transactional
-    public void orderAll(String actId, String userId) throws Exception {
+    public void orderAll(String accountId, String userId) throws Exception {
         User user = userService.findById(userId);
         Cart cart = cartRepository.findByUser(user).orElseThrow(ChangeSetPersister.NotFoundException::new);
-        Account account = accountService.findById(actId);
+        Account account = accountService.findById(accountId);
         orderService.create(cart, account);
     }
 

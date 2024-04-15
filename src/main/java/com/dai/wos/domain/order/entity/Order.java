@@ -21,11 +21,11 @@ public class Order extends BaseEntity {
     private Long seq;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ACT_ID",nullable = false)
+    @JoinColumn(name = "ACCOUNT_ID",nullable = false)
     private Account account;
 
     @Column(nullable = false, length = 200)
-    private String actNm;
+    private String accountNm;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "ITEM_ID",nullable = false)
@@ -47,7 +47,7 @@ public class Order extends BaseEntity {
     @Builder
     private Order (Account account, Item item, Owner owner, int quantity) {
         this.account = account;
-        this.actNm = account.getActNm();
+        this.accountNm = account.getAccountNm();
         this.item = item;
         this.itemNm = item.getItemNm();
         this.owner = owner;

@@ -13,8 +13,8 @@ import java.text.SimpleDateFormat;
 public class OrderResponseDto {
     private String ymd; //주문 일자
     private Long seq; //주문 번호
-    private String actId; //거래처코드
-    private String actNm; //거래처명
+    private String accountId; //거래처코드
+    private String accountNm; //거래처명
     private String itemId; //제품코드
     private String itemNm; // 제품 명
     private int quantity; //주문 수량
@@ -25,8 +25,8 @@ public class OrderResponseDto {
         return new OrderResponseDto(
                 ymd,
                 order.getSeq(),
-                order.getAccount().getActId(),
-                order.getActNm(),
+                order.getAccount().getAccountId(),
+                order.getAccountNm(),
                 order.getItem().getItemId(),
                 order.getItemNm(),
                 order.getQuantity()

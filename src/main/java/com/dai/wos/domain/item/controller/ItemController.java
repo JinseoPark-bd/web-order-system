@@ -17,7 +17,7 @@ public class ItemController {
     private final ItemService itemService;
 
     // 상품 전체 조회
-    @GetMapping("/search")
+    @GetMapping("")
     @PreAuthorize("isAuthenticated()")
     public List<ItemResponseDto> findAll(@AuthenticationPrincipal User user) {
         return itemService.findAll(user.getUsername());

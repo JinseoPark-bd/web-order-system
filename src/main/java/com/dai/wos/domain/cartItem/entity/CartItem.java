@@ -14,10 +14,15 @@ import org.hibernate.annotations.OnDeleteAction;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@SequenceGenerator(
+        name="CART_ITEM_ID_GENERATOR",
+        sequenceName = "CART_ITEM_SEQ",
+        initialValue = 1, allocationSize = 1)
 @Entity(name = "OJT_OMS_CART_ITEM_JPA")
 public class CartItem {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CART_ITEM_ID_GENERATOR")
     private Long cartItemId;
 
     @ManyToOne(fetch = FetchType.LAZY)

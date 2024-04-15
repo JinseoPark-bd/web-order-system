@@ -4,6 +4,7 @@ import com.dai.wos.domain.account.entity.Account;
 import com.dai.wos.domain.item.entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -15,9 +16,9 @@ public interface AccountRepository extends JpaRepository<Account, String> {
      * @param keyword
      * @return List<Account>
      */
-    @Query("SELECT a FROM OJT_OMS_ACT_JPA a " +
-            "WHERE (:keyword IS NULL OR LOWER(a.actId) LIKE CONCAT('%', LOWER(:keyword), '%')" +
-            "OR (:keyword IS NULL OR LOWER(a.actNm) LIKE CONCAT('%', LOWER(:keyword), '%')")
-    List<Account> findByKeyword(String keyword);
+    @Query("SELECT a FROM OJT_OMS_ACCOUNT_JPA a " +
+            "WHERE (:keyword IS NULL OR LOWER(a.accountId) LIKE CONCAT('%', LOWER(:keyword), '%')) " +
+            "OR (:keyword IS NULL OR LOWER(a.accountNm) LIKE CONCAT('%', LOWER(:keyword), '%'))")
+    List<Account> findByKeyword(@Param("keyword") String keyword);
 
 }
