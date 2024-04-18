@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:oracle:thin:@172.16.1.162:1521:NEXOS
-    username: YMWSM
-    password: admin@ymwsm
+    url: jdbc:oracle:thin:@172.16.1.162:1521:
+    username:
+    password:
     driver-class-name: oracle.jdbc.OracleDriver
   jpa:
     database: oracle
